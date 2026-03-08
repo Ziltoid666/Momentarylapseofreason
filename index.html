@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fly over a procedurally generated voxel world with flying saucers in this 3D sandbox experience.">
+    <title>Voxel Skyways — 3D Voxel Sandbox</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1 class="splash-title">VOXEL<span>SKYWAYS</span></h1>
+            <p class="splash-subtitle">Explore infinite voxel worlds from above</p>
+            <div class="splash-controls">
+                <div class="control-item"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Move</div>
+                <div class="control-item"><kbd>Space</kbd> Ascend &nbsp; <kbd>Shift</kbd> Descend</div>
+                <div class="control-item"><kbd>Mouse</kbd> Look around</div>
+                <div class="control-item"><kbd>Esc</kbd> Options menu</div>
+            </div>
+            <button id="start-btn" class="glow-btn">CLICK TO FLY</button>
+        </div>
+    </div>
+
+    <div id="hud" class="hidden">
+        <div id="crosshair">+</div>
+        <div id="hud-top-left">
+            <div id="coords">X: 0 Y: 0 Z: 0</div>
+            <div id="speed-display">Speed: 1.0x</div>
+            <div id="fps-display">FPS: 60</div>
+        </div>
+        <div id="hud-top-right">
+            <div id="compass">N</div>
+        </div>
+        <div id="minimap-container">
+            <canvas id="minimap" width="150" height="150"></canvas>
+        </div>
+    </div>
+
+    <div id="options-panel" class="hidden">
+        <div class="options-backdrop"></div>
+        <div class="options-content">
+            <h2>OPTIONS</h2>
+            <div class="option-group">
+                <h3>World</h3>
+                <label>Render Distance
+                    <input type="range" id="opt-render-distance" min="3" max="20" value="12" step="1">
+                    <span id="opt-render-distance-val">12</span>
+                </label>
+                <label>Time of Day
+                    <input type="range" id="opt-time" min="0" max="24" value="10" step="0.5">
+                    <span id="opt-time-val">10:00</span>
+                </label>
+                <label>Fog Density
+                    <input type="range" id="opt-fog" min="0" max="100" value="40" step="5">
+                    <span id="opt-fog-val">40%</span>
+                </label>
+            </div>
+            <div class="option-group">
+                <h3>Flight</h3>
+                <label>Flight Speed
+                    <input type="range" id="opt-speed" min="0.5" max="5" value="1" step="0.25">
+                    <span id="opt-speed-val">1.0x</span>
+                </label>
+                <label>Mouse Sensitivity
+                    <input type="range" id="opt-sensitivity" min="0.1" max="3" value="1" step="0.1">
+                    <span id="opt-sensitivity-val">1.0</span>
+                </label>
+            </div>
+            <div class="option-group">
+                <h3>Visual</h3>
+                <label>Flying Saucers Count
+                    <input type="range" id="opt-saucers" min="0" max="20" value="8" step="1">
+                    <span id="opt-saucers-val">8</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-shadows" checked> Shadows
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-clouds" checked> Volumetric Clouds
+                </label>
+            </div>
+            <button id="options-close-btn" class="glow-btn">RESUME FLIGHT</button>
+        </div>
+    </div>
+
+    <canvas id="game-canvas"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>
